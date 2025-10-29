@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner (India) - Start Here!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #8EC5B1 0%, #AAE59B 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #000000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: #000000;
+            padding: 40px 20px;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .card h2 {
+            color: #8EC5B1;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .card p {
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .card-button {
+            display: inline-block;
+            background: #8EC5B1;
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .card-button:hover {
+            background: #93B3AE;
+        }
+        
+        .highlight-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #8EC5B1, #95D6AA);
+            color: #000000;
+        }
+        
+        .highlight-card h2,
+        .highlight-card p {
+            color: #000000;
+        }
+        
+        .highlight-card .card-button {
+            background: white;
+            color: #000000;
+        }
+        
+        .highlight-card .card-button:hover {
+            background: #f8fafc;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #000000;
+            margin-top: 50px;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .highlight-card {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Travel Route Planner - India</h1>
+            <p>Your Complete DSA Mini Project - Graph Algorithms for Indian Cities</p>
+        </div>
+        
+        <div class="grid">
+            <!-- Main Application Card -->
+            <div class="card highlight-card">
+                <div class="card-icon">🚀</div>
+                <h2>Launch the Application</h2>
+                <p>Start planning optimal travel routes across India using advanced graph algorithms. Choose from 20 major Indian cities and find the best path based on distance, time, or cost!</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-value">20</span>
+                        <span class="stat-label">Cities</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">50+</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Algorithms</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px;">
+                    <a href="index.html" class="card-button" style="font-size: 1.2rem; padding: 15px 40px;">
+                        🎯 Start Planning Routes
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Start Guide -->
+            <div class="card">
+                <div class="card-icon">📖</div>
+                <h2>Quick Start Guide</h2>
+                <p>New to the application? Start here! This interactive guide will walk you through all features, explain the algorithms, and show you how to get the most out of the planner.</p>
+                <a href="QUICK_START.html" class="card-button">View Guide</a>
+            </div>
+            
+            <!-- Test Suite -->
+            <div class="card">
+                <div class="card-icon">🧪</div>
+                <h2>Algorithm Testing</h2>
+                <p>Run comprehensive tests on all pathfinding algorithms. Compare performance, verify correctness, and see all algorithms in action with automated test cases.</p>
+                <a href="test.html" class="card-button">Run Tests</a>
+            </div>
+            
+            <!-- Documentation -->
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h2>Documentation</h2>
+                <p>Complete project documentation including user guide, technical details, code architecture, and real-world applications of graph algorithms.</p>
+                <a href="README.md" class="card-button" target="_blank">Read Docs</a>
+            </div>
+            
+            <!-- Developer Guide -->
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h2>Developer Guide</h2>
+                <p>Want to extend or modify the application? This guide shows you how to add cities, routes, algorithms, and customize every aspect of the project.</p>
+                <a href="DEVELOPER_GUIDE.md" class="card-button" target="_blank">For Developers</a>
+            </div>
+            
+            <!-- Technical Docs -->
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h2>Technical Details</h2>
+                <p>Deep dive into the architecture, implementation details, algorithm complexity, design patterns, and code structure of the entire application.</p>
+                <a href="PROJECT_DOCUMENTATION.md" class="card-button" target="_blank">View Technical Docs</a>
+            </div>
+            
+            <!-- Project Summary -->
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h2>Project Summary</h2>
+                <p>Complete overview of the project including features, statistics, learning outcomes, and everything you need to know at a glance.</p>
+                <a href="PROJECT_SUMMARY.txt" class="card-button" target="_blank">View Summary</a>
+            </div>
+        </div>
+        
+        <!-- Features Overview -->
+        <div class="card" style="margin-top: 30px;">
+            <h2 style="text-align: center; color: #8EC5B1; margin-bottom: 25px;">✨ What You'll Learn</h2>
+            <div class="features">
+                <div class="feature" style="background: #E8F8F0;">
+                    <div class="feature-icon">🌐</div>
+                    <strong>Graph Data Structures</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Nodes, edges, adjacency lists</p>
+                </div>
+                <div class="feature" style="background: #D1F5E8;">
+                    <div class="feature-icon">🔍</div>
+                    <strong>Search Algorithms</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">BFS, DFS implementations</p>
+                </div>
+                <div class="feature" style="background: #F0E8FF;">
+                    <div class="feature-icon">🎯</div>
+                    <strong>Pathfinding</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Dijkstra's & A* algorithms</p>
+                </div>
+                <div class="feature" style="background: #FFE8F3;">
+                    <div class="feature-icon">📈</div>
+                    <strong>Algorithm Analysis</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Time & space complexity</p>
+                </div>
+                <div class="feature" style="background: #FFFAEC;">
+                    <div class="feature-icon">💻</div>
+                    <strong>Web Development</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">JavaScript, HTML5, CSS3</p>
+                </div>
+                <div class="feature" style="background: #D1F5E8;">
+                    <div class="feature-icon">🎨</div>
+                    <strong>Data Visualization</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">SVG graphics & animation</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Real-World Applications -->
+        <div class="card" style="margin-top: 30px; background: linear-gradient(135deg, #95D6AA, #AAE59B); color: #000000;">
+            <h2 style="color: #000000; text-align: center; margin-bottom: 25px;">🌍 Real-World Applications</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <strong>Navigation Systems</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">GPS, Google Maps</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📦</div>
+                    <strong>Logistics</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Delivery optimization</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✈️</div>
+                    <strong>Travel Industry</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Flight planning</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <strong>Network Routing</strong>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Internet packets</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3 style="margin-bottom: 10px;">🎓 Complete DSA Mini Project</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                Fully functional • Well-documented • Production-ready • Educational
+            </p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">
+                Built with vanilla JavaScript • No dependencies • Runs anywhere
+            </p>
+            <p style="margin-top: 20px; font-size: 0.85rem;">
+                Created as an educational project for learning Data Structures & Algorithms<br>
+                © 2025 - Free for educational use
+            </p>
+        </div>
+    </div>
+</body>
+</html>

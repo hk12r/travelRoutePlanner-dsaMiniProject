@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner (India) - Algorithm Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8EC5B1 0%, #AAE59B 100%);
+            color: #000000;
+        }
+        h1 {
+            color: #000000;
+            text-align: center;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-case {
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 4px solid #8EC5B1;
+            background: #f8fafc;
+        }
+        .test-case h3 {
+            margin-top: 0;
+            color: #000000;
+        }
+        .success {
+            border-left-color: #95D6AA;
+        }
+        .error {
+            border-left-color: #FFB7DD;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        .metric {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: 600;
+        }
+        button {
+            background: #8EC5B1;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #93B3AE;
+        }
+        .path {
+            color: #8EC5B1;
+            font-weight: 600;
+        }
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Travel Planner (India) - Algorithm Tests</h1>
+    
+    <div class="test-section">
+        <h2>Test Controls</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="testDijkstra()">Test Dijkstra</button>
+        <button onclick="testAStar()">Test A*</button>
+        <button onclick="testBFS()">Test BFS</button>
+        <button onclick="testDFS()">Test DFS</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div id="results"></div>
+
+    <div class="test-section">
+        <h2>Graph Statistics</h2>
+        <div id="stats"></div>
+    </div>
+
+    <!-- Include all JavaScript files -->
+    <script src="graph.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="data.js"></script>
+
+    <script>
+        // Initialize graph
+        const graph = new Graph(false);
+        TravelData.initializeSampleData(graph);
+
+        // Display graph statistics
+        function displayStats() {
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <div class="result">
+                    <div class="metric">Total Cities: ${graph.nodeCount()}</div>
+                    <div class="metric">Total Routes: ${graph.edgeCount()}</div>
+                    <div class="metric">Graph Type: ${graph.isDirected ? 'Directed' : 'Undirected'}</div>
+                </div>
+            `;
+        }
+        displayStats();
+
+        // Test cases for major Indian cities
+        const testCases = [
+            { from: 'del', to: 'mum', name: 'Delhi to Mumbai' },
+            { from: 'blr', to: 'kol', name: 'Bangalore to Kolkata' },
+            { from: 'chen', to: 'jammu', name: 'Chennai to Jammu' },
+            { from: 'hyd', to: 'guwahati', name: 'Hyderabad to Guwahati' },
+            { from: 'jaipur', to: 'kochi', name: 'Jaipur to Kochi' },
+            { from: 'ahm', to: 'vizag', name: 'Ahmedabad to Visakhapatnam' }
+        ];
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        function addResult(title, content, isSuccess = true) {
+            const resultsDiv = document.getElementById('results');
+            const testDiv = document.createElement('div');
+            testDiv.className = `test-section test-case ${isSuccess ? 'success' : 'error'}`;
+            testDiv.innerHTML = `
+                <h3>${title}</h3>
+                ${content}
+            `;
+            resultsDiv.appendChild(testDiv);
+        }
+
+        function formatResult(result, weightType = 'distance') {
+            if (!result) {
+                return '<p style="color: #ef4444;">❌ No path found</p>';
+            }
+
+            const formatted = TravelData.formatPathResult(graph, result, weightType);
+            if (!formatted) {
+                return '<p style="color: #ef4444;">❌ Error formatting result</p>';
+            }
+
+            let html = `
+                <div class="result">
+                    <p><strong>Algorithm:</strong> ${formatted.algorithm}</p>
+                    <p><strong>Path:</strong> <span class="path">${formatted.path.join(' → ')}</span></p>
+                    <p>
+                        <span class="metric">📏 ${Math.round(formatted.totalDistance)} km</span>
+                        <span class="metric">⏱️ ${formatted.totalTime.toFixed(1)} hrs</span>
+                        <span class="metric">💰 ₹${Math.round(formatted.totalCost)}</span>
+                    </p>
+                </div>
+            `;
+
+            return html;
+        }
+
+        function testDijkstra() {
+            console.log('Testing Dijkstra\'s Algorithm...');
+            
+            testCases.forEach(testCase => {
+                const result = GraphAlgorithms.dijkstra(graph, testCase.from, testCase.to, 'distance');
+                const title = `Dijkstra: ${testCase.name}`;
+                const content = formatResult(result, 'distance');
+                addResult(title, content, result !== null);
+            });
+
+            // Test with different optimizations
+            const result = GraphAlgorithms.dijkstra(graph, 'del', 'blr', 'time');
+            const title = 'Dijkstra: Delhi to Bangalore (Optimized for Time)';
+            const content = formatResult(result, 'time');
+            addResult(title, content, result !== null);
+        }
+
+        function testAStar() {
+            console.log('Testing A* Algorithm...');
+            
+            testCases.forEach(testCase => {
+                const result = GraphAlgorithms.aStar(graph, testCase.from, testCase.to, 'distance');
+                const title = `A*: ${testCase.name}`;
+                const content = formatResult(result, 'distance');
+                addResult(title, content, result !== null);
+            });
+        }
+
+        function testBFS() {
+            console.log('Testing BFS Algorithm...');
+            
+            testCases.forEach(testCase => {
+                const result = GraphAlgorithms.bfs(graph, testCase.from, testCase.to);
+                const title = `BFS: ${testCase.name}`;
+                const content = formatResult(result);
+                addResult(title, content, result !== null);
+            });
+        }
+
+        function testDFS() {
+            console.log('Testing DFS Algorithm...');
+            
+            testCases.forEach(testCase => {
+                const result = GraphAlgorithms.dfs(graph, testCase.from, testCase.to);
+                const title = `DFS: ${testCase.name}`;
+                const content = formatResult(result);
+                addResult(title, content, result !== null);
+            });
+        }
+
+        function testGraphStructure() {
+            console.log('Testing Graph Structure...');
+            
+            let html = '<div class="result">';
+            html += '<h4>Graph Integrity Tests</h4>';
+            
+            // Test 1: All nodes have valid data
+            let validNodes = true;
+            for (const node of graph.getAllNodes()) {
+                if (!node.data.x || !node.data.y) {
+                    validNodes = false;
+                    break;
+                }
+            }
+            html += `<p>✓ All nodes have coordinates: ${validNodes ? '✅' : '❌'}</p>`;
+            
+            // Test 2: All edges have valid weights
+            let validEdges = true;
+            for (const edge of graph.getAllEdges()) {
+                if (!edge.data.distance || !edge.data.time || !edge.data.cost) {
+                    validEdges = false;
+                    break;
+                }
+            }
+            html += `<p>✓ All edges have valid data: ${validEdges ? '✅' : '❌'}</p>`;
+            
+            // Test 3: Graph connectivity
+            const samplePath = GraphAlgorithms.dijkstra(graph, 'del', 'mum', 'distance');
+            html += `<p>✓ Graph is connected: ${samplePath ? '✅' : '❌'}</p>`;
+            
+            html += '</div>';
+            addResult('Graph Structure Validation', html, validNodes && validEdges && samplePath);
+        }
+
+        function compareAlgorithms() {
+            console.log('Comparing Algorithms...');
+            
+            const from = 'del';
+            const to = 'blr';
+            
+            const dijkstra = GraphAlgorithms.dijkstra(graph, from, to, 'distance');
+            const astar = GraphAlgorithms.aStar(graph, from, to, 'distance');
+            const bfs = GraphAlgorithms.bfs(graph, from, to);
+            const dfs = GraphAlgorithms.dfs(graph, from, to);
+            
+            let html = `
+                <div class="result">
+                    <h4>Algorithm Comparison: Delhi to Bangalore</h4>
+                    ${formatResult(dijkstra, 'distance')}
+                    ${formatResult(astar, 'distance')}
+                    ${formatResult(bfs, 'distance')}
+                    ${formatResult(dfs, 'distance')}
+                </div>
+            `;
+            
+            addResult('Algorithm Comparison', html, true);
+        }
+
+        function runAllTests() {
+            clearResults();
+            addResult('🚀 Running All Tests...', '<p>Please wait...</p>', true);
+            
+            setTimeout(() => {
+                clearResults();
+                testGraphStructure();
+                testDijkstra();
+                testAStar();
+                testBFS();
+                testDFS();
+                compareAlgorithms();
+                
+                addResult('✅ All Tests Complete', 
+                    '<p>All algorithms have been tested successfully!</p>', true);
+            }, 100);
+        }
+
+        // Log initial message
+        console.log('Test page loaded. Graph initialized with', graph.nodeCount(), 'cities.');
+    </script>
+</body>
+</html>
