@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner (India) - Quick Start Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8EC5B1 0%, #AAE59B 100%);
+            color: #000000;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #8EC5B1;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #000000;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #000000;
+            border-bottom: 3px solid #8EC5B1;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .step {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #8EC5B1;
+            border-radius: 5px;
+        }
+        .step-number {
+            background: #8EC5B1;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        .algo-card {
+            background: linear-gradient(135deg, #E8F8F0 0%, #D1F5E8 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .algo-card h3 {
+            margin-top: 0;
+            color: #8EC5B1;
+        }
+        .button-demo {
+            display: inline-block;
+            background: #8EC5B1;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+        }
+        .button-demo:hover {
+            background: #93B3AE;
+            transform: translateY(-2px);
+        }
+        .tip {
+            background: #FFFAEC;
+            border-left: 5px solid #FFDE7A;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+        th {
+            background: #8EC5B1;
+            color: #000000;
+        }
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .links {
+            text-align: center;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗺️ Travel Planner (India) - Quick Start Guide</h1>
+        <p class="subtitle">Get started in 5 minutes!</p>
+
+        <h2>🚀 Getting Started</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Open the Application</strong>
+            <p>Simply open <code>index.html</code> in your web browser. No installation needed!</p>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Select Your Route</strong>
+            <p>Choose a starting city and destination from the dropdown menus.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Choose Algorithm & Criteria</strong>
+            <p>Pick your pathfinding algorithm and optimize for distance, time, or cost.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Find Your Route</strong>
+            <p>Click "Find Route" and see the optimal path with detailed information!</p>
+        </div>
+
+        <h2>🎯 Key Features</h2>
+
+        <div class="feature">
+            <div class="feature-icon">🧮</div>
+            <div>
+                <h3>Multiple Algorithms</h3>
+                <p>Choose from Dijkstra, A*, BFS, or DFS - each with unique characteristics.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <div>
+                <h3>Multi-Criteria Optimization</h3>
+                <p>Optimize your route by shortest distance, fastest time, or lowest cost.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <div>
+                <h3>Interactive Visualization</h3>
+                <p>See your route highlighted on the map with zoom and pan controls.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📝</div>
+            <div>
+                <h3>Detailed Results</h3>
+                <p>Get step-by-step directions with distance, time, cost, and transport mode.</p>
+            </div>
+        </div>
+
+        <h2>🧠 Understanding the Algorithms</h2>
+
+        <div class="algo-card">
+            <h3>🎯 Dijkstra's Algorithm</h3>
+            <p><strong>Best for:</strong> Finding the guaranteed shortest path</p>
+            <p><strong>How it works:</strong> Explores all paths systematically, always choosing the shortest unexplored edge</p>
+            <p><strong>Use when:</strong> You need the absolute optimal route</p>
+        </div>
+
+        <div class="algo-card">
+            <h3>⭐ A* Algorithm</h3>
+            <p><strong>Best for:</strong> Fast optimal pathfinding</p>
+            <p><strong>How it works:</strong> Like Dijkstra but uses heuristics (straight-line distance) to explore more promising paths first</p>
+            <p><strong>Use when:</strong> You want faster results than Dijkstra</p>
+        </div>
+
+        <div class="algo-card">
+            <h3>🔄 Breadth-First Search (BFS)</h3>
+            <p><strong>Best for:</strong> Finding path with minimum number of stops</p>
+            <p><strong>How it works:</strong> Explores level by level, treating all edges equally</p>
+            <p><strong>Use when:</strong> You care more about number of connections than total distance</p>
+        </div>
+
+        <div class="algo-card">
+            <h3>🔍 Depth-First Search (DFS)</h3>
+            <p><strong>Best for:</strong> Finding any path quickly</p>
+            <p><strong>How it works:</strong> Explores one path completely before trying another</p>
+            <p><strong>Use when:</strong> You just need a path, not necessarily the shortest</p>
+        </div>
+
+        <h2>💡 Example Scenarios</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Algorithm</th>
+                    <th>Optimize For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Budget travel trip</td>
+                    <td>Dijkstra</td>
+                    <td>Cost</td>
+                </tr>
+                <tr>
+                    <td>Business trip (time sensitive)</td>
+                    <td>A*</td>
+                    <td>Time</td>
+                </tr>
+                <tr>
+                    <td>Road trip (scenic route)</td>
+                    <td>Dijkstra</td>
+                    <td>Distance</td>
+                </tr>
+                <tr>
+                    <td>Quick connection check</td>
+                    <td>BFS</td>
+                    <td>Any</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🛠️ Tips & Tricks</h2>
+
+        <div class="tip">
+            <strong>💡 Tip 1:</strong> Use the zoom controls to get a better view of the route on the map.
+        </div>
+
+        <div class="tip">
+            <strong>💡 Tip 2:</strong> Compare results by trying different algorithms on the same route.
+        </div>
+
+        <div class="tip">
+            <strong>💡 Tip 3:</strong> The highlighted path shows: Green = Start, Red = End, Green edges = Your route.
+        </div>
+
+        <div class="tip">
+            <strong>💡 Tip 4:</strong> Check the route details for transportation mode and individual segment costs.
+        </div>
+
+        <div class="tip">
+            <strong>💡 Tip 5:</strong> Use <code>test.html</code> to see all algorithms in action and compare performance.
+        </div>
+
+        <h2>📋 Available Cities</h2>
+
+        <div class="example">
+Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Kolkata, 
+Ahmedabad, Pune, Jaipur, Lucknow, Kochi, Goa, 
+Chandigarh, Indore, Bhopal, Nagpur, Visakhapatnam, 
+Surat, Varanasi, Amritsar
+        </div>
+
+        <h2>🧪 Testing the Application</h2>
+
+        <p>Want to see all algorithms in action? Open <code>test.html</code> to:</p>
+        <ul>
+            <li>Run automated tests on all algorithms</li>
+            <li>Compare algorithm performance</li>
+            <li>Verify graph integrity</li>
+            <li>See multiple test cases simultaneously</li>
+        </ul>
+
+        <h2>❓ Common Questions</h2>
+
+        <h3>Q: Why do different algorithms give different routes?</h3>
+        <p>A: DFS and BFS find any valid path, while Dijkstra and A* find the optimal path. BFS optimizes for fewest stops, while Dijkstra/A* optimize for the weight you choose (distance/time/cost).</p>
+
+        <h3>Q: What does "Optimize For" mean?</h3>
+        <p>A: It determines which metric the algorithm minimizes - either total distance (km), total time (hours), or total cost ($).</p>
+
+        <h3>Q: Can I add my own cities?</h3>
+        <p>A: Yes! Edit the <code>data.js</code> file and add cities to the <code>cities</code> array and routes to the <code>routes</code> array.</p>
+
+        <h3>Q: How accurate is the data?</h3>
+        <p>A: The distances are approximate real-world values. Times and costs are realistic estimates for demonstration purposes.</p>
+
+        <h2>🎓 Learning Resources</h2>
+
+        <p>This project demonstrates:</p>
+        <ul>
+            <li><strong>Graph Theory:</strong> Nodes, edges, adjacency lists</li>
+            <li><strong>Algorithms:</strong> Pathfinding, traversal, optimization</li>
+            <li><strong>Data Structures:</strong> Maps, Sets, Queues</li>
+            <li><strong>Web Development:</strong> JavaScript, HTML5, CSS3, SVG</li>
+        </ul>
+
+        <div class="links">
+            <h2>🔗 Quick Links</h2>
+            <a href="index.html" class="button-demo">Launch Application</a>
+            <a href="test.html" class="button-demo">Run Tests</a>
+            <a href="README.md" class="button-demo">Read Documentation</a>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e2e8f0;">
+
+        <p style="text-align: center; color: #000000;">
+            <strong>Have fun exploring graph algorithms! 🚀</strong><br>
+            <small>Created as a DSA mini project for educational purposes</small>
+        </p>
+    </div>
+</body>
+</html>
